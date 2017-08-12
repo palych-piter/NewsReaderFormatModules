@@ -1,0 +1,34 @@
+Some notes regarding the application implementation/design.
+
+
+-The code is robust. Gadle could be used for building the jar file to run. 
+ - Run "gradle shadowJar" to build the jar file. The formattext.properties file 
+   will be placed in the build folder as well.   
+ - Run "jar NewsReaderFormatModules-1.0-all.jar"
+
+-formattext.properties file in the resouces folder contains tags for each concept type
+In case username and link use the keywords "username" and "link" to point places
+where actual usernames and links will be placed in output formatted concepts.
+
+-The application generates an output in a console based on hardcoded inputs from module 1 and module 2 
+
+
+In terms of design : 
+
+-Concept.java represents the concept object. 
+
+-All modules have interfaces with the corresponding implementations;
+
+-Module 1 : CrawlFeedsImpl.java represents implementation for generating an output for the Module 1. 
+The output is hardcoded according to the example provided in the example. 
+
+-Module 2 : ExtractConceptsImpl.java represents implementation for generating an output for the Module 2. 
+The output is hardcoded according to the example provided in the example. 
+The module returns an ArrayList populated with the concept objects. It doesn't matter how the concept objects 
+are ordered.
+
+-Module 3 : FormatFeedsImpl.java represents implementation for generating an output for the Module 2. 
+Firts, the input ArrayList is ordered by overriding the Collections.sort method. The object with the higthest start position will be handled first.
+Then iterate through concepts. If there are the corresponding tags in the property file for the concept type the corresponding string replacement 
+will have a place. If there are not the corresponding tags - the error message will be placed on the console. 
+ 
