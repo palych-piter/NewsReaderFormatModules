@@ -1,0 +1,100 @@
+group 'formattext'
+version '1.0'
+
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+    }
+}
+
+
+sourceSets {
+    main {
+        java {
+            exclude 'src/main/resources/formattext.properties'
+        }
+    }
+}
+
+//For building a single jar with all dependencies run "gradlew shadowJar"
+// Configure the shadow jar task
+shadowJar {
+    // exclude properties file from jar
+    exclude('formattext.properties')
+    mergeServiceFiles()
+}
+
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+   mavenCentral()
+}
+
+
+dependencies {
+
+   compile 'ch.qos.logback:logback-classic:1.2.2'
+   compile 'javax.persistence:persistence-api:1.0.2'
+
+   compile('junit:junit:4.12'){
+        exclude group: 'org.hamcrest'
+   }
+   compile 'org.hamcrest:hamcrest-library:1.3'
+
+}
+
+
+jar {
+
+   manifest {
+
+        attributes(
+           "Implementation-Title": "Gradle",
+           "Implementation-Version": version,
+           "Main-Class": "com.jetlore.formattext.Main"
+       )
+    }
+
+   from {
+          configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+   }
+
+
+//filtering out test classes, only test suites should be run
+    test {
+        testLogging.showStandardStreams = true
+        testLogging.exceptionFormat = 'full'
+
+
+    }
+
+    //the copyFiles task executes right after the shadowJar and copy
+    //the property and test files into the build folder
+    task copyFiles  {
+        doLast  {
+            copy {
+                from 'src/main/resources/formattext.properties'
+                into 'build/libs/'
+            }
+
+        }
+    }
+
+    shadowJar.finalizedBy(copyFiles)
+
+}
+
+
+
+
+
