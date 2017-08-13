@@ -1,19 +1,19 @@
 Some notes regarding the application implementation/design.
 
 
--The code is workable. Gadle can be used for building the jar file to run; 
+The code is workable. Gadle can be used for building the jar file to run; 
  - Run "gradle shadowJar" to build the jar file. The formattext.properties file will be placed in the build folder as well.   
  - Run "jar NewsReaderFormatModules-1.0-all.jar". The result will be placed to the console.
 
--The formattext.properties file is placed in the resouces folder and contains tags for each concept type.
+The formattext.properties file is placed in the resouces folder and contains tags for each concept type.
 In case username and link concepts use the keywords "username" and "link" to highlight where actual usernames and links should be placed in formatted output concepts.
 
--The application generates an output in a console based on hardcoded inputs from module 1 and module 2. 
+The application generates an output in a console based on hardcoded inputs from module 1 and module 2. 
 
 
 In terms of design : 
 
--Concept.java represents the concept object. 
+Concept.java represents the concept object. 
 
 All modules have interfaces with the corresponding implementations; 
 The implementations for the Module 1 and Module 2 generate hardcoded values, but could be re-written in case certain logic.
