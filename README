@@ -31,6 +31,5 @@ Firts, the input ArrayList is ordered by overriding the Collections.sort method.
 Then iterate through concepts. If there are the corresponding tags in the property file for the concept type the corresponding string replacement will have a place. 
 If there are not the corresponding tags the error message will be placed on the console. 
 
-In case of adding new concepts all that a user needs to do is just to add a new concept type into the property file with necessary tags. 
-All other steps to format a feed will be done automatically. 
+In case of adding new concepts all that a user needs to do is just to add a new concept type into the property file with necessary tags. All other steps to format a feed will be done automatically. 
 
