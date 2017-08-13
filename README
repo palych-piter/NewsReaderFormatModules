@@ -5,7 +5,7 @@ The code is workable. Gadle can be used for building the jar file to run;
  - Run "gradle shadowJar" to build the jar file. The formattext.properties file will be placed in the build folder as well.   
  - Run "jar NewsReaderFormatModules-1.0-all.jar". The result will be placed to the console.
 
-The formattext.properties file is placed in the resources folder and contains tags for each concept type.
+The formattext.properties file is placed in the resources folder and contains open and close tags for each concept type separated by a comma.
 In case username and link concepts use the keywords "username" and "link" to highlight where actual usernames and links should be placed in formatted output concepts.
 
 The application generates an output in a console based on hardcoded inputs from module 1 and module 2. 
@@ -30,4 +30,7 @@ Module 3 : FormatFeedsImpl.java represents implementation for generating an outp
 Firts, the input ArrayList is ordered by overriding the Collections.sort method. The object with the highest start position will be handled first.
 Then iterate through concepts. If there are the corresponding tags in the property file for the concept type the corresponding string replacement will have a place. 
 If there are not the corresponding tags the error message will be placed on the console. 
- 
+
+In case of adding new concepts all that a user needs to do is just to add a new concept type into the property file with necessary tags. 
+All other steps to format a feed will be done automatically. 
+
