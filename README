@@ -15,18 +15,18 @@ In terms of design :
 
 -Concept.java represents the concept object. 
 
--All modules have interfaces with the corresponding implementations. 
+All modules have interfaces with the corresponding implementations; 
 The implementations for the Module 1 and Module 2 generate hardcoded values, but could be re-written in case certain logic.
 The implementation for the Module 3 generates an output formatted feed according to implemented logic. 
 
--Module 1 : CrawlFeedsImpl.java represents implementation for generating an output for the Module 1. 
+Module 1 : CrawlFeedsImpl.java represents implementation for generating an output for the Module 1. 
 The output is hardcoded according to the suggested example. 
 
--Module 2 : ExtractConceptsImpl.java represents implementation for generating an output for the Module 2. 
+Module 2 : ExtractConceptsImpl.java represents implementation for generating an output for the Module 2. 
 The output is hardcoded according to the suggested example. 
 The module returns an ArrayList populated with the concept objects. It doesn't matter how the concept objects are ordered at this stage.
 
--Module 3 : FormatFeedsImpl.java represents implementation for generating an output for the Module 2. 
+Module 3 : FormatFeedsImpl.java represents implementation for generating an output for the Module 2. 
 Firts, the input ArrayList is ordered by overriding the Collections.sort method. The object with the higthest start position will be handled first.
 Then iterate through concepts. If there are the corresponding tags in the property file for the concept type the corresponding string replacement will have a place. 
 If there are not the corresponding tags - the error message will be placed on the console. 
